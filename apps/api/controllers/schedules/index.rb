@@ -7,7 +7,7 @@ module Api
         def call(params)
           @schedules = ScheduleRepository.new.all
 
-          self.body = @schedules.map { |s| s.to_h }.to_json
+          self.body = ApplicationSerializer.new(@schedules).serialize
         end
       end
     end
