@@ -1,8 +1,19 @@
 source 'https://rubygems.org'
 
+ruby '2.6.3'
+
 gem 'rake'
 gem 'hanami',       '~> 1.3'
 gem 'hanami-model', '~> 1.3'
+gem 'trailblazer-operation'
+gem 'jwt_sessions'
+gem 'readthis'
+gem 'hiredis'
+gem 'sidekiq'
+gem 'action_policy'
+# gem 'sneakers'
+# gem 'celluloid'
+# gem 'reel-rack'
 
 gem 'pg'
 
@@ -20,11 +31,9 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'fabrication'
 end
 
 group :production do
   # gem 'puma'
 end
-ruby '2.6.3'
-ruby '2.6.3'
-ruby '2.6.3'
