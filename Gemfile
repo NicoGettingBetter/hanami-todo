@@ -5,8 +5,10 @@ ruby '2.6.3'
 gem 'rake'
 gem 'hanami',       '~> 1.3'
 gem 'hanami-model', '~> 1.3'
+gem 'hanami-router'
 gem 'trailblazer-operation'
 gem 'jwt_sessions'
+gem 'jsonapi-hanami', github: 'jsonapi-rb/jsonapi-hanami'
 gem 'readthis'
 gem 'hiredis'
 gem 'sidekiq'
@@ -32,7 +34,8 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
-  gem 'fabrication'
+  gem 'hanami-fabrication'
+  gem 'ffaker'
 end
 
 group :production do

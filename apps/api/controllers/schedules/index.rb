@@ -3,11 +3,17 @@ module Api
     module Schedules
       class Index
         include Api::Action
+        include JSONAPI::Hanami::Action
 
         def call(params)
-          @schedules = ScheduleRepository.new.all
+          schedule_repository = ScheduleRepository.new
+          @schedules = schedule_repository.all
+          # Hanami::Logger.new('Controller').info(schedule_repository)
+          # Hanami::Logger.new('Controller').info(@schedules)
 
-          self.body = ApplicationSerializer.new(@schedules).serialize
+          # self.body = ApplicationSerializer.new(@schedules).serialize
+          self.data = @schedules
+          self.status = 200
         end
       end
     end
