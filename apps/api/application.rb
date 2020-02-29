@@ -20,7 +20,8 @@ module Api
       #
       load_paths << [
         'controllers',
-        'views'
+        'resources',
+        # 'views'
       ]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
@@ -86,6 +87,7 @@ module Api
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
+      # middleware.use Hanami::Middleware::BodyParser::JsonParser
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
@@ -103,49 +105,49 @@ module Api
 
       # The layout to be used by all views
       #
-      layout :application # It will load Api::Views::ApplicationLayout
+      # layout :application # It will load Api::Views::ApplicationLayout
 
       # The relative path to templates
       #
-      templates 'templates'
+      # templates 'templates'
 
       ##
       # ASSETS
       #
-      assets do
-        # JavaScript compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :uglifier
-        #   * :yui
-        #   * :closure
-        #
-        # See: https://guides.hanamirb.org/assets/compressors
-        #
-        # In order to skip JavaScript compression comment the following line
-        javascript_compressor :builtin
+      # assets do
+      #   # JavaScript compressor
+      #   #
+      #   # Supported engines:
+      #   #
+      #   #   * :builtin
+      #   #   * :uglifier
+      #   #   * :yui
+      #   #   * :closure
+      #   #
+      #   # See: https://guides.hanamirb.org/assets/compressors
+      #   #
+      #   # In order to skip JavaScript compression comment the following line
+      #   javascript_compressor :builtin
 
-        # Stylesheet compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :yui
-        #   * :sass
-        #
-        # See: https://guides.hanamirb.org/assets/compressors
-        #
-        # In order to skip stylesheet compression comment the following line
-        stylesheet_compressor :builtin
+      #   # Stylesheet compressor
+      #   #
+      #   # Supported engines:
+      #   #
+      #   #   * :builtin
+      #   #   * :yui
+      #   #   * :sass
+      #   #
+      #   # See: https://guides.hanamirb.org/assets/compressors
+      #   #
+      #   # In order to skip stylesheet compression comment the following line
+      #   stylesheet_compressor :builtin
 
-        # Specify sources for assets
-        #
-        sources << [
-          'assets'
-        ]
-      end
+      #   # Specify sources for assets
+      #   #
+      #   sources << [
+      #     'assets'
+      #   ]
+      # end
 
       ##
       # SECURITY
@@ -162,7 +164,7 @@ module Api
       #   * https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options
       #   * https://www.owasp.org/index.php/Clickjacking
       #
-      security.x_frame_options 'DENY'
+      # security.x_frame_options 'DENY'
 
       # X-Content-Type-Options prevents browsers from interpreting files as
       # something else than declared by the content type in the HTTP headers.
@@ -173,7 +175,7 @@ module Api
       #   * https://msdn.microsoft.com/en-us/library/gg622941%28v=vs.85%29.aspx
       #   * https://blogs.msdn.microsoft.com/ie/2008/09/02/ie8-security-part-vi-beta-2-update
       #
-      security.x_content_type_options 'nosniff'
+      # security.x_content_type_options 'nosniff'
 
       # X-XSS-Protection is a HTTP header to determine the behavior of the
       # browser in case an XSS attack is detected.
@@ -183,7 +185,7 @@ module Api
       #   * https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
       #   * https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#X-XSS-Protection
       #
-      security.x_xss_protection '1; mode=block'
+      # security.x_xss_protection '1; mode=block'
 
       # Content-Security-Policy (CSP) is a HTTP header supported by modern
       # browsers. It determines trusted sources of execution for dynamic
@@ -220,22 +222,22 @@ module Api
       #
       #  * https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives
       #
-      security.content_security_policy %{
-        form-action 'self';
-        frame-ancestors 'self';
-        base-uri 'self';
-        default-src 'none';
-        script-src 'self';
-        connect-src 'self';
-        img-src 'self' https: data:;
-        style-src 'self' 'unsafe-inline' https:;
-        font-src 'self';
-        object-src 'none';
-        plugin-types application/pdf;
-        child-src 'self';
-        frame-src 'self';
-        media-src 'self'
-      }
+      # security.content_security_policy %{
+      #   form-action 'self';
+      #   frame-ancestors 'self';
+      #   base-uri 'self';
+      #   default-src 'none';
+      #   script-src 'self';
+      #   connect-src 'self';
+      #   img-src 'self' https: data:;
+      #   style-src 'self' 'unsafe-inline' https:;
+      #   font-src 'self';
+      #   object-src 'none';
+      #   plugin-types application/pdf;
+      #   child-src 'self';
+      #   frame-src 'self';
+      #   media-src 'self'
+      # }
 
       ##
       # FRAMEWORKS
@@ -254,10 +256,16 @@ module Api
       # This is useful for sharing common functionality
       #
       # See: http://www.rubydoc.info/gems/hanami-view#Configuration
-      view.prepare do
-        include Hanami::Helpers
-        include Api::Assets::Helpers
-      end
+      # view.prepare do
+      #   include Hanami::Helpers
+      #   include Api::Assets::Helpers
+      # end
+
+      default_request_format :json
+      default_response_format :json
+      body_parsers :json
+
+      controller.format jsonapi: 'application/vnd.api+json'
     end
 
     ##
