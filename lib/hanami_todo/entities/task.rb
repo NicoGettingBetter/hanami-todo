@@ -1,4 +1,4 @@
-class Schedule < Hanami::Entity
+class Task < Hanami::Entity
   include Hanami::Validations
 
   validations do
