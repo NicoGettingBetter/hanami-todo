@@ -4,4 +4,4 @@
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
 
-resources :schedules, only: %i[index create update]
+resources :schedules, only: %i[index create update destroy]

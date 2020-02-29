@@ -1,24 +1,22 @@
 module Api
   module Controllers
     module Schedules
-      class Create
+      class Destroy
         include Api::Action
         include JSONAPI::Hanami::Action
 
         deserializable_resource :schedule, class: DeserializableSchedule
 
         params do
-          required(:schedule).schema do
-            required(:title).filled(:str?)
-          end
+          required(:id).filled(:str?)
         end
 
         def call(params)
           repo = ScheduleRepository.new
-          schedule = repo.create(params[:schedule])
+          schedule = repo.delete(params[:id])
 
           self.data = schedule
-          self.status = 201
+          self.status = 200
         end
       end
     end

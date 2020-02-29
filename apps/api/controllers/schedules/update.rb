@@ -17,7 +17,6 @@ module Api
 
         def call(params)
           repo = ScheduleRepository.new
-          Hanami::Logger.new('Controller').info(params.to_h)
           schedule = repo.update(params[:id], params[:schedule])
 
           self.data = schedule

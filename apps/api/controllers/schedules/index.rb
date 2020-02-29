@@ -8,10 +8,7 @@ module Api
         def call(params)
           schedule_repository = ScheduleRepository.new
           @schedules = schedule_repository.all
-          # Hanami::Logger.new('Controller').info(schedule_repository)
-          # Hanami::Logger.new('Controller').info(@schedules)
 
-          # self.body = ApplicationSerializer.new(@schedules).serialize
           self.data = @schedules
           self.status = 200
         end
