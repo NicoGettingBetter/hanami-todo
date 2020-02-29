@@ -7,9 +7,9 @@ module Api
 
         def call(params)
           schedule_repository = ScheduleRepository.new
-          @schedules = schedule_repository.all
+          schedules = schedule_repository.all
 
-          self.data = @schedules
+          self.data = schedules
           self.status = 200
         end
       end
