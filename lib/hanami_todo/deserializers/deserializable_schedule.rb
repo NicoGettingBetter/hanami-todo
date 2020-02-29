@@ -1,4 +1,5 @@
-class DeserializableSchedule < JSONAPI::Deserializable::Resource
-  type
+class DeserializableSchedule < ApplicationDeserializableResourse
+  # type { { type: 'schedules' } }
+
   attribute :title
 end
