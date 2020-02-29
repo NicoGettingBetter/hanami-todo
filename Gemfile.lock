@@ -30,6 +30,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
+    database_cleaner (1.8.3)
     debug_inspector (0.0.3)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -244,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   action_policy
   capybara
+  database_cleaner
   dotenv (~> 2.4)
   dry-inflector
   ffaker

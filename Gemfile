@@ -37,6 +37,7 @@ group :test do
   gem 'capybara'
   gem 'hanami-fabrication'
   gem 'ffaker'
+  gem 'database_cleaner'
 end
 
 group :production do
