@@ -8,7 +8,7 @@ module Api
         deserializable_resource :task, class: DeserializableTask
 
         params do
-          required(:schedule_id)
+          required(:schedule_id).filled(:str?)
         end
 
         def call(params)
