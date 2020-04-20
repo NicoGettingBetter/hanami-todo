@@ -1,4 +1,4 @@
 Fabricator(:task) do
   title { FFaker::Name.name }
-  schedule
+  description { FFaker::Name.name }
 end
