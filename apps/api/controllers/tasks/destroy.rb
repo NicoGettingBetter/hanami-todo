@@ -1,6 +1,6 @@
 module Api
   module Controllers
-    module Schedules
+    module Tasks
       class Destroy
         include Api::Action
         include JSONAPI::Hanami::Action
@@ -10,10 +10,10 @@ module Api
         end
 
         def call(params)
-          repo = ScheduleRepository.new
-          schedule = repo.delete(params[:id])
+          repo = TaskRepository.new
+          task = repo.delete(params[:id])
 
-          self.data = schedule
+          self.data = task
           self.status = 200
         end
       end
