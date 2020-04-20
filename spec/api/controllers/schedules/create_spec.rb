@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 RSpec.describe Api::Controllers::Schedules::Create, type: :action do
   let(:action) { described_class.new }
 

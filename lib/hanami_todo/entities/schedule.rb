@@ -1,6 +1,4 @@
-class Schedule < Hanami::Entity
-  include Hanami::Validations
-
+class Schedule < ApplicationEntity
   validations do
     required(:title) { filled? & str? }
   end

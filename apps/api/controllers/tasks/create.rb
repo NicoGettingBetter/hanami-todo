@@ -10,6 +10,7 @@ module Api
         params do
           required(:task).schema do
             required(:title).filled(:str?)
+            required(:schedule_id).filled(:str?)
           end
         end
 
