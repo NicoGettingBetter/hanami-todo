@@ -1,4 +1,4 @@
-class Schedule < ApplicationEntity
+class Task < ApplicationEntity
   validations do
     required(:title) { filled? & str? }
   end

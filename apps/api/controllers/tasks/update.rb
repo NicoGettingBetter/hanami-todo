@@ -1,19 +1,22 @@
 module Api
   module Controllers
-    module Schedules
-      class Destroy
+    module Tasks
+      class Update
         include Api::Action
         include JSONAPI::Hanami::Action
 
+        deserializable_resource :task, class: DeserializableTask
+
         params do
           required(:id).filled(:str?)
+          required(:task)
         end
 
         def call(params)
-          repo = ScheduleRepository.new
-          schedule = repo.delete(params[:id])
+          repo = TaskRepository.new
+          task = repo.update(params[:id], params[:task])
 
-          self.data = schedule
+          self.data = task
           self.status = 200
         end
       end
