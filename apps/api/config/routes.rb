@@ -6,3 +6,4 @@
 
 resources :schedules, only: %i[index show create update destroy]
 resources :tasks, only: %i[index show create update destroy]
+resources :comments, only: %i[index show create update destroy]
