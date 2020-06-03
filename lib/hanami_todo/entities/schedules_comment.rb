@@ -1,2 +1,2 @@
-class SchedulesComment < Hanami::Entity
+class SchedulesComment < ApplicationEntity
 end

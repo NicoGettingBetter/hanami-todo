@@ -1,2 +1,2 @@
-class TasksComment < Hanami::Entity
+class TasksComment < ApplicationEntity
 end
