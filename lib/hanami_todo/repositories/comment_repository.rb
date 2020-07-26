@@ -14,6 +14,20 @@ class CommentRepository < Hanami::Repository
     aggregate(:tasks_comment).where(id: id).map_to(Comment).one
   end
 
+  def by_schedule(id)
+    comments
+      .where(id: SchedulesCommentRepository.new.by_schedule(id).map(&:comment_id))
+      .map_to(Comment)
+      .to_a
+  end
+
+  def by_task(id)
+    comments
+      .where(id: TasksCommentRepository.new.by_task(id).map(&:comment_id))
+      .map_to(Comment)
+      .to_a
+  end
+
   def create_with_parent(params)
     if params[:schedule_id]
       comment_params = params.merge(schedules_comment: { schedule_id: params[:schedule_id] })

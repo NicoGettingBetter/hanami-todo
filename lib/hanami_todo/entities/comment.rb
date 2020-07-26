@@ -11,7 +11,7 @@ class Comment < ApplicationEntity
     CommentRepository.new.find_with_tasks_comment(id).tasks_comment&.task_id
   end
 
-  def item
+  def parent
     if schedule_id
       ScheduleRepository.new.find(schedule_id)
     else
