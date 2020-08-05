@@ -1,3 +1,8 @@
+require 'spec_helper'
+
 RSpec.describe Comment, type: :entity do
-  # place your tests here
+  it 'can be initialised with attributes' do
+    comment = described_class.new(text: 'Well done')
+    expect(comment.text).to eq 'Well done'
+  end
 end

@@ -11,7 +11,7 @@ RSpec.describe Api::Controllers::Schedules::Destroy, type: :action do
       }
     end
 
-    it 'creates Schedule' do
+    it 'destroys Schedule' do
       response = action.call(params)
 
       expect(response[0]).to eq 200

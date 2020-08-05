@@ -9,7 +9,9 @@ module Api
 
         params do
           required(:id).filled(:str?)
-          required(:comment)
+          required(:comment).schema do
+            required(:text).filled(:str?)
+          end
         end
 
         def call(params)
