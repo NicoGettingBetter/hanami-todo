@@ -1,0 +1,2 @@
+class TasksComment < ApplicationEntity
+end

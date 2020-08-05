@@ -19,10 +19,10 @@ RSpec.describe Api::Controllers::Tasks::Create, type: :action do
       response = action.call(params)
 
       expect(response[0]).to eq 201
-      expect(TasksRepository.new.last.title).to eq 'Test'
-      expect(TasksRepository.new.last.description).to eq 'Desc'
-      expect(TasksRepository.new.last.completed).to be true
-      expect(TasksRepository.new.last.estimation).to eq 1.5
+      expect(TaskRepository.new.last.title).to eq 'Test'
+      expect(TaskRepository.new.last.description).to eq 'Desc'
+      expect(TaskRepository.new.last.completed).to be true
+      expect(TaskRepository.new.last.estimation).to eq 1.5
     end
   end
 end

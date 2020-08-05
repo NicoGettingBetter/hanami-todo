@@ -33,7 +33,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-hanami'
   gem 'capybara'
   gem 'hanami-fabrication'
   gem 'ffaker'

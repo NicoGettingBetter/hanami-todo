@@ -14,7 +14,7 @@ RSpec.describe Api::Controllers::Schedules::Update, type: :action do
       }
     end
 
-    it 'creates Schedule' do
+    it 'updates Schedule' do
       response = action.call(params)
 
       expect(response[0]).to eq 200

@@ -1,0 +1,2 @@
+class SchedulesComment < ApplicationEntity
+end

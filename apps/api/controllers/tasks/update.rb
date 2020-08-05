@@ -9,7 +9,12 @@ module Api
 
         params do
           required(:id).filled(:str?)
-          required(:task)
+          required(:task).schema do
+            required(:title).filled(:str?)
+            required(:description).filled(:str?)
+            required(:completed).filled(:bool?)
+            required(:estimation).filled(:float?)
+          end
         end
 
         def call(params)
